@@ -19,7 +19,7 @@
 #
 # Foreign Keys
 #
-#  host_country_id  (host_country_id => host_countries.id)
+#  host_country_id  (host_country_id => countries.id)
 #
 require "test_helper"
 

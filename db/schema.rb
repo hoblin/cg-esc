@@ -35,5 +35,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_16_034243) do
   create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
   end
 
-  add_foreign_key "contests", "host_countries"
+  add_foreign_key "contests", "countries", column: "host_country_id"
 end

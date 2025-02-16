@@ -3,15 +3,15 @@
 # Table name: contests
 #
 #  id                    :integer          not null, primary key
-#  first_semifinal_date  :datetime
-#  grand_final_date      :datetime
-#  host_city             :string
-#  second_semifinal_date :datetime
-#  slogan                :string
 #  year                  :integer
+#  host_country_id       :integer          not null
+#  host_city             :string
+#  slogan                :string
+#  first_semifinal_date  :datetime
+#  second_semifinal_date :datetime
+#  grand_final_date      :datetime
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
-#  host_country_id       :integer          not null
 #
 # Indexes
 #
@@ -19,8 +19,8 @@
 #
 # Foreign Keys
 #
-#  host_country_id  (host_country_id => host_countries.id)
+#  host_country_id  (host_country_id => countries.id)
 #
 class Contest < ApplicationRecord
-  belongs_to :host_country
+  belongs_to :host_country, class_name: 'Country'
 end
