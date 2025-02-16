@@ -53,6 +53,7 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem "pry", "~> 0.15.2"
   gem "web-console"
   gem "yard", "~> 0.9.37"
 end
@@ -64,3 +65,4 @@ group :test do
 end
 
 gem "tailwindcss-rails", "~> 4.0"
+gem 'data_migrate'

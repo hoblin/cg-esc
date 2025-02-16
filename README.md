@@ -16,6 +16,7 @@ A modern web-based character generator system for Eurovision Song Contest video 
 
 - Ruby on Rails 8
 - SQLite
+- TailwindCSS
 - Modern frontend with animations and transitions
 - Video-compatible output formats
 
