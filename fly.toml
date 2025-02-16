@@ -9,6 +9,10 @@ console_command = '/rails/bin/rails console'
 
 [build]
 
+[mounts]
+  source="esc"
+  destination="/mnt/esc"
+
 [http_service]
   internal_port = 3000
   force_https = true
