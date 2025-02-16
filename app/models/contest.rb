@@ -22,6 +22,6 @@
 #  host_country_id  (host_country_id => countries.id)
 #
 class Contest < ApplicationRecord
-  belongs_to :host_country, class_name: 'Country'
+  belongs_to :host_country, class_name: "Country"
   has_many :entries
 end

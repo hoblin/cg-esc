@@ -65,9 +65,9 @@ group :test do
 end
 
 gem "tailwindcss-rails", "~> 4.0"
-gem 'data_migrate'
+gem "data_migrate"
 gem "annotaterb", "~> 4.13"
 gem "awesome_print", "~> 1.9"
 gem "phosphor_icons", "~> 0.3.0"
 
-gem "dockerfile-rails", ">= 1.7", :group => :development
+gem "dockerfile-rails", ">= 1.7", group: :development
