@@ -5,6 +5,6 @@
 
   <%= render "form", entry: @entry %>
 
-  <%= link_to "Show this entry", @entry, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= link_to "Back to entries", entries_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+  <%= icon_button "Show this entry", "eye", entry_path(@entry), secondary_button_class %>
+  <%= icon_button "Back to entries", "arrow-left", entries_path, secondary_button_class %>
 </div>
