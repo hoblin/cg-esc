@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  year: 1
+  host_country: one
+  host_city: MyString
+  slogan: MyString
+  grand_final_date: 2025-02-16 05:42:43
+  first_semifinal_date: 2025-02-16 05:42:43
+  second_semifinal_date: 2025-02-16 05:42:43
+
+two:
+  year: 1
+  host_country: two
+  host_city: MyString
+  slogan: MyString
+  grand_final_date: 2025-02-16 05:42:43
+  first_semifinal_date: 2025-02-16 05:42:43
+  second_semifinal_date: 2025-02-16 05:42:43
