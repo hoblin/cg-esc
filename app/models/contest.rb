@@ -23,4 +23,5 @@
 #
 class Contest < ApplicationRecord
   belongs_to :host_country, class_name: 'Country'
+  has_many :entries
 end

@@ -21,6 +21,7 @@ class Country < ApplicationRecord
 
   # Western European countries
   WESTERN_EUROPEAN_COUNTRIES = [
+    { name: 'Austria', code: 'AUT', flag: '🇦🇹' },
     { name: 'Belgium', code: 'BEL', flag: '🇧🇪' },
     { name: 'Ireland', code: 'IRL', flag: '🇮🇪' },
     { name: 'Luxembourg', code: 'LUX', flag: '🇱🇺' },
@@ -57,7 +58,8 @@ class Country < ApplicationRecord
     { name: 'Bulgaria', code: 'BGR', flag: '🇧🇬' },
     { name: 'Estonia', code: 'EST', flag: '🇪🇪' },
     { name: 'Latvia', code: 'LVA', flag: '🇱🇻' },
-    { name: 'Lithuania', code: 'LTU', flag: '🇱🇹' }
+    { name: 'Lithuania', code: 'LTU', flag: '🇱🇹' },
+    { name: 'Ukraine', code: 'UKR', flag: '🇺🇦' }
   ].freeze
 
   # Balkan countries
@@ -93,6 +95,8 @@ class Country < ApplicationRecord
     { name: 'Belarus', code: 'BLR', flag: '🇧🇾' },
     { name: 'Andorra', code: 'AND', flag: '🇦🇩' }
   ].freeze
+
+  has_many :entries
 
   def self.all_countries
     BIG_FIVE +
