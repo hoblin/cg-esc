@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
 
   # GET /entries or /entries.json
   def index
-    @entries = Entry.all
+    @entries = current_user.contest.entries.includes(:country)
   end
 
   # GET /entries/1 or /entries/1.json
