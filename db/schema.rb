@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_16_041212) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_16_203035) do
   create_table "contests", force: :cascade do |t|
     t.integer "year"
     t.integer "host_country_id", null: false
@@ -52,7 +52,25 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_16_041212) do
     t.index ["country_id"], name: "index_entries_on_country_id"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "ip_address"
+    t.string "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email_address", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_address"], name: "index_users_on_email_address", unique: true
+  end
+
   add_foreign_key "contests", "countries", column: "host_country_id"
   add_foreign_key "entries", "contests"
   add_foreign_key "entries", "countries"
+  add_foreign_key "sessions", "users"
 end
