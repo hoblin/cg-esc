@@ -109,4 +109,8 @@ class Country < ApplicationRecord
       SPECIAL_PARTICIPANTS +
       HISTORICAL_PARTICIPANTS
   end
+
+  def name_with_flag
+    "#{flag} #{name}"
+  end
 end
