@@ -74,7 +74,9 @@ GEM
       uri (>= 0.13.1)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
+    annotaterb (4.13.0)
     ast (2.4.2)
+    awesome_print (1.9.2)
     base64 (0.2.0)
     bcrypt_pbkdf (1.1.1)
     benchmark (0.4.0)
@@ -179,10 +181,16 @@ GEM
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     ostruct (0.6.1)
+    ox (2.14.22)
+      bigdecimal (>= 3.0)
     parallel (1.26.3)
     parser (3.3.7.1)
       ast (~> 2.4.1)
       racc
+    phosphor_icons (0.3.0)
+      actionview
+      ox (~> 2.14)
+      railties
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -352,6 +360,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotaterb (~> 4.13)
+  awesome_print (~> 1.9)
   bootsnap
   brakeman
   capybara
@@ -360,6 +370,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kamal
+  phosphor_icons (~> 0.3.0)
   propshaft
   pry (~> 0.15.2)
   puma (>= 5.0)
