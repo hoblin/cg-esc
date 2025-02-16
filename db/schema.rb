@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_16_034243) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_16_041212) do
   create_table "contests", force: :cascade do |t|
     t.integer "year"
     t.integer "host_country_id", null: false
@@ -35,5 +35,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_16_034243) do
   create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
   end
 
+  create_table "entries", force: :cascade do |t|
+    t.integer "contest_id", null: false
+    t.integer "country_id", null: false
+    t.string "artist_name"
+    t.string "song_title"
+    t.text "lyrics"
+    t.text "en_lyrics"
+    t.integer "semifinal"
+    t.integer "semifinal_order"
+    t.integer "final_order"
+    t.boolean "qualified"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contest_id"], name: "index_entries_on_contest_id"
+    t.index ["country_id"], name: "index_entries_on_country_id"
+  end
+
   add_foreign_key "contests", "countries", column: "host_country_id"
+  add_foreign_key "entries", "contests"
+  add_foreign_key "entries", "countries"
 end
