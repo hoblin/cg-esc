@@ -4,7 +4,7 @@
   <h1 class="font-bold text-4xl">Editing entry</h1>
 
   <%= render "form", entry: @entry %>
-
+  <br>
   <%= icon_button "Show this entry", "eye", entry_path(@entry), secondary_button_class %>
   <%= icon_button "Back to entries", "arrow-left", entries_path, secondary_button_class %>
 </div>
