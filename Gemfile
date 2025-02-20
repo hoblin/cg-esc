@@ -64,7 +64,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "tailwindcss-rails", "~> 4.0"
+gem "tailwindcss-rails", "~> 4.1"
 gem "data_migrate"
 gem "annotaterb", "~> 4.13"
 gem "awesome_print", "~> 1.9"
