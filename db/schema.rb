@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_16_225013) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_26_011052) do
   create_table "contests", force: :cascade do |t|
     t.integer "year"
     t.integer "host_country_id", null: false
@@ -52,6 +52,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_16_225013) do
     t.index ["country_id"], name: "index_entries_on_country_id"
   end
 
+  create_table "entry_ranking_place_predictions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "entry_id", null: false
+    t.integer "predicted_place", null: false
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entry_id"], name: "index_entry_ranking_place_predictions_on_entry_id"
+    t.index ["user_id", "entry_id"], name: "index_entry_ranking_place_predictions_on_user_and_entry", unique: true
+    t.index ["user_id"], name: "index_entry_ranking_place_predictions_on_user_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "ip_address"
@@ -73,5 +85,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_16_225013) do
   add_foreign_key "contests", "countries", column: "host_country_id"
   add_foreign_key "entries", "contests"
   add_foreign_key "entries", "countries"
+  add_foreign_key "entry_ranking_place_predictions", "entries"
+  add_foreign_key "entry_ranking_place_predictions", "users"
   add_foreign_key "sessions", "users"
 end

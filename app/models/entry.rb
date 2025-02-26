@@ -58,7 +58,10 @@
 #   @return [Contest] the contest this entry participated in
 # @!method country
 #   @return [Country] the country this entry represents
+# @!method entry_ranking_place_predictions
+#   @return [ActiveRecord::Relation<EntryRankingPlacePrediction>] all place predictions for this entry
 class Entry < ApplicationRecord
   belongs_to :contest
   belongs_to :country
+  has_many :entry_ranking_place_predictions, dependent: :destroy
 end

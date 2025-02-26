@@ -30,9 +30,12 @@
 #
 # @!method sessions
 #   @return [ActiveRecord::Relation<Session>] all sessions associated with this user
+# @!method entry_ranking_place_predictions
+#   @return [ActiveRecord::Relation<EntryRankingPlacePrediction>] all place predictions made by this user
 class User < ApplicationRecord
   has_secure_password
   has_many :sessions, dependent: :destroy
+  has_many :entry_ranking_place_predictions, dependent: :destroy
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 

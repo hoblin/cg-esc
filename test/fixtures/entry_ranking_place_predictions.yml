@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  entry: one
+  predicted_place: 1
+  notes: MyText
+
+two:
+  user: two
+  entry: two
+  predicted_place: 1
+  notes: MyText
