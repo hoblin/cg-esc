@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
   end
   # Presentation mode route
-  resource :presentation, only: [:show]
+  resource :presentation, only: [ :show ]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

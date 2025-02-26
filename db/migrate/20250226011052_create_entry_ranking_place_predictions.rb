@@ -10,7 +10,7 @@ class CreateEntryRankingPlacePredictions < ActiveRecord::Migration[8.0]
     end
 
     # Ensure each user can only have one prediction per entry
-    add_index :entry_ranking_place_predictions, [:user_id, :entry_id], unique: true,
+    add_index :entry_ranking_place_predictions, [ :user_id, :entry_id ], unique: true,
               name: 'index_entry_ranking_place_predictions_on_user_and_entry'
   end
 end
