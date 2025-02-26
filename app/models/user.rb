@@ -12,6 +12,24 @@
 #
 #  index_users_on_email_address  (email_address) UNIQUE
 #
+
+# @!attribute [r] id
+#   @return [Integer] the unique identifier for the user
+# @!attribute [rw] email_address
+#   @return [String] the user's email address (normalized to lowercase)
+# @!attribute [rw] password_digest
+#   @return [String] the secure digest of the user's password
+# @!attribute [r] created_at
+#   @return [DateTime] when the record was created
+# @!attribute [r] updated_at
+#   @return [DateTime] when the record was last updated
+# @!attribute [rw] settings
+#   @return [Hash] JSON-encoded user settings
+# @!attribute [rw] contest_id
+#   @return [Integer] ID of the currently selected contest (stored in settings)
+#
+# @!method sessions
+#   @return [ActiveRecord::Relation<Session>] all sessions associated with this user
 class User < ApplicationRecord
   has_secure_password
   has_many :sessions, dependent: :destroy
@@ -20,6 +38,8 @@ class User < ApplicationRecord
 
   store :settings, accessors: %i[contest_id], coder: JSON
 
+  # @return [Contest] The user's currently selected contest
+  # @note If no contest is selected, it defaults to the next upcoming contest
   def contest
     set_default_contest_id
 
@@ -31,6 +51,7 @@ class User < ApplicationRecord
   # Updates the contest_id if it's not set.
   # Finds the next contest based on current date
   # and the contest grand_final_date.
+  # @return [Integer, nil] The ID of the selected contest or nil if already set
   def set_default_contest_id
     return if contest_id.present?
 

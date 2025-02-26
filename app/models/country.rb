@@ -9,6 +9,22 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+
+# @!attribute [r] id
+#   @return [Integer] the unique identifier for the country
+# @!attribute [rw] code
+#   @return [String] the ISO country code (three-letter code)
+# @!attribute [rw] flag
+#   @return [String] emoji representation of the country's flag
+# @!attribute [rw] name
+#   @return [String] the full name of the country
+# @!attribute [r] created_at
+#   @return [DateTime] when the record was created
+# @!attribute [r] updated_at
+#   @return [DateTime] when the record was last updated
+#
+# @!method entries
+#   @return [ActiveRecord::Relation<Entry>] all entries submitted by this country
 class Country < ApplicationRecord
   # Automatic qualifiers for the Eurovision final
   BIG_FIVE = [
@@ -98,6 +114,8 @@ class Country < ApplicationRecord
 
   has_many :entries
 
+  # @return [Array<Hash>] Returns an array of all countries that have participated in Eurovision
+  # @note This method combines all country categories into a single array
   def self.all_countries
     BIG_FIVE +
       WESTERN_EUROPEAN_COUNTRIES +
@@ -110,6 +128,7 @@ class Country < ApplicationRecord
       HISTORICAL_PARTICIPANTS
   end
 
+  # @return [String] Returns the country name prefixed with its flag emoji
   def name_with_flag
     "#{flag} #{name}"
   end
