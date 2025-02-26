@@ -1,14 +1,25 @@
 <header class="bg-white dark:bg-gray-800 shadow">
   <nav class="mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 items-center">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-        <%- if authenticated? %>
-          <%= current_user.contest.year %>
-          <%= current_user.contest.host_country.flag %>
-          <%= current_user.contest.host_country.name %>
-          <%= current_user.contest.host_city %>
-        <%- end %>
-      </h2>
+    <div class="flex h-16 items-center justify-between">
+      <div class="flex items-center">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+          <%- if authenticated? %>
+            <%= current_user.contest.year %>
+            <%= current_user.contest.host_country.flag %>
+            <%= current_user.contest.host_country.name %>
+            <%= current_user.contest.host_city %>
+          <%- end %>
+        </h2>
+      </div>
+
+      <%- if authenticated? %>
+        <div class="flex items-center space-x-4">
+          <%= link_to "Entries", entries_path, class: "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+          <%= link_to "Presenting Mode", presentation_path, class: "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+          <%= link_to "Settings", "#", class: "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+          <%= button_to "Logout", session_path, method: :delete, class: "bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-md text-sm font-medium" %>
+        </div>
+      <%- end %>
     </div>
   </nav>
 </header>

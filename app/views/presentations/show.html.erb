@@ -1,0 +1,51 @@
+<div class="presentation-container">
+  <div class="presentation-instructions">
+    Press ESC to exit presentation mode | Press F for fullscreen
+  </div>
+
+  <div class="scoreboard-container">
+    <% if @all_entries.empty? %>
+      <div class="text-center text-2xl mt-10">
+        No entries available for this contest.
+      </div>
+    <% else %>
+      <% positions_per_column = (@total_positions / 3.0).ceil %>
+
+      <div class="positions-grid">
+        <% (1..@total_positions).each_slice(positions_per_column) do |position_group| %>
+          <div class="positions-column">
+            <% position_group.each do |position| %>
+              <div class="position-row" data-presentation-mode-target="entryRow" data-position="<%= position %>">
+                <div class="place-number">
+                  <%= position %>.
+                </div>
+
+                <% if entry = @position_to_entry[position] %>
+                  <div class="entry-content">
+                    <div class="country-flag">
+                      <%= entry.country.flag %>
+                    </div>
+                    <div class="country-name">
+                      <%= entry.country.name %>
+                    </div>
+                  </div>
+                <% else %>
+                  <div class="entry-content">
+                    <div class="country-flag"></div>
+                    <div class="country-name"></div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @all_entries.present? %>
+    <div class="prediction-status">
+      <%= @predictions.size %> out of <%= @all_entries.count %> entries ranked
+    </div>
+  <% end %>
+</div>

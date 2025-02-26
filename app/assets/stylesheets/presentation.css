@@ -1,0 +1,330 @@
+/* Presentation mode styles */
+
+/* Base layout */
+.presentation-mode {
+  background-color: #000000;
+  /* Black background */
+  color: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.presentation-container {
+  padding: 2rem;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Instructions - now more visible */
+.presentation-instructions {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  opacity: 1;
+  z-index: 10;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Scoreboard container - light border for video editing */
+.scoreboard-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 1rem;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  /* Very subtle border for video editing */
+}
+
+/* Position row styling - like Eurovision scoreboard */
+.position-row {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  height: 40px;
+  /* Fixed height like in Eurovision */
+  position: relative;
+}
+
+/* Hide the position number in our layout */
+.place-number {
+  display: none;
+}
+
+/* Entry content - styled like official Eurovision scoreboard */
+.entry-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #4a0072;
+  /* Darker purple for the main block */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Country flag */
+.country-flag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  min-width: 60px;
+  height: 100%;
+  font-size: 2rem;
+  padding: 0;
+  background-color: transparent;
+  /* Let the flag show against purple */
+}
+
+/* Country name */
+.country-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0 15px;
+  flex-grow: 1;
+  color: white;
+}
+
+/* Points display on the right */
+.position-row::after {
+  content: attr(data-position);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+  color: white;
+  text-align: right;
+  padding-right: 15px;
+  background-color: #4a0072;
+  /* Same color as main block */
+}
+
+/* Grid layout - keep 3 columns */
+.positions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  width: 100%;
+}
+
+.positions-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Empty slot styling */
+.position-row:not(:has(.country-flag:empty)) .entry-content {
+  background-color: #4a0072;
+  /* Normal purple for filled entries */
+}
+
+.position-row:has(.country-flag:empty) .entry-content {
+  background-color: #3a0058;
+  /* Darker purple for empty slots */
+  opacity: 0.6;
+}
+
+/* Prediction status - adjusted for outside scoreboard positioning */
+.prediction-status {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 5;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.position-row {
+  animation: fadeIn 0.5s ease-out both;
+}
+
+/* Apply sequential animation delays to rows */
+/* First column */
+.positions-column:nth-child(1) .position-row:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.positions-column:nth-child(1) .position-row:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.positions-column:nth-child(1) .position-row:nth-child(3) {
+  animation-delay: 0.11s;
+}
+
+.positions-column:nth-child(1) .position-row:nth-child(4) {
+  animation-delay: 0.14s;
+}
+
+.positions-column:nth-child(1) .position-row:nth-child(5) {
+  animation-delay: 0.17s;
+}
+
+.positions-column:nth-child(1) .position-row:nth-child(6) {
+  animation-delay: 0.20s;
+}
+
+.positions-column:nth-child(1) .position-row:nth-child(7) {
+  animation-delay: 0.23s;
+}
+
+.positions-column:nth-child(1) .position-row:nth-child(8) {
+  animation-delay: 0.26s;
+}
+
+.positions-column:nth-child(1) .position-row:nth-child(9) {
+  animation-delay: 0.29s;
+}
+
+.positions-column:nth-child(1) .position-row:nth-child(10) {
+  animation-delay: 0.32s;
+}
+
+.positions-column:nth-child(1) .position-row:nth-child(11) {
+  animation-delay: 0.35s;
+}
+
+.positions-column:nth-child(1) .position-row:nth-child(12) {
+  animation-delay: 0.38s;
+}
+
+.positions-column:nth-child(1) .position-row:nth-child(13) {
+  animation-delay: 0.41s;
+}
+
+/* Second column */
+.positions-column:nth-child(2) .position-row:nth-child(1) {
+  animation-delay: 0.10s;
+}
+
+.positions-column:nth-child(2) .position-row:nth-child(2) {
+  animation-delay: 0.13s;
+}
+
+.positions-column:nth-child(2) .position-row:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.positions-column:nth-child(2) .position-row:nth-child(4) {
+  animation-delay: 0.19s;
+}
+
+.positions-column:nth-child(2) .position-row:nth-child(5) {
+  animation-delay: 0.22s;
+}
+
+.positions-column:nth-child(2) .position-row:nth-child(6) {
+  animation-delay: 0.25s;
+}
+
+.positions-column:nth-child(2) .position-row:nth-child(7) {
+  animation-delay: 0.28s;
+}
+
+.positions-column:nth-child(2) .position-row:nth-child(8) {
+  animation-delay: 0.31s;
+}
+
+.positions-column:nth-child(2) .position-row:nth-child(9) {
+  animation-delay: 0.34s;
+}
+
+.positions-column:nth-child(2) .position-row:nth-child(10) {
+  animation-delay: 0.37s;
+}
+
+.positions-column:nth-child(2) .position-row:nth-child(11) {
+  animation-delay: 0.40s;
+}
+
+.positions-column:nth-child(2) .position-row:nth-child(12) {
+  animation-delay: 0.43s;
+}
+
+.positions-column:nth-child(2) .position-row:nth-child(13) {
+  animation-delay: 0.46s;
+}
+
+/* Third column */
+.positions-column:nth-child(3) .position-row:nth-child(1) {
+  animation-delay: 0.15s;
+}
+
+.positions-column:nth-child(3) .position-row:nth-child(2) {
+  animation-delay: 0.18s;
+}
+
+.positions-column:nth-child(3) .position-row:nth-child(3) {
+  animation-delay: 0.21s;
+}
+
+.positions-column:nth-child(3) .position-row:nth-child(4) {
+  animation-delay: 0.24s;
+}
+
+.positions-column:nth-child(3) .position-row:nth-child(5) {
+  animation-delay: 0.27s;
+}
+
+.positions-column:nth-child(3) .position-row:nth-child(6) {
+  animation-delay: 0.30s;
+}
+
+.positions-column:nth-child(3) .position-row:nth-child(7) {
+  animation-delay: 0.33s;
+}
+
+.positions-column:nth-child(3) .position-row:nth-child(8) {
+  animation-delay: 0.36s;
+}
+
+.positions-column:nth-child(3) .position-row:nth-child(9) {
+  animation-delay: 0.39s;
+}
+
+.positions-column:nth-child(3) .position-row:nth-child(10) {
+  animation-delay: 0.42s;
+}
+
+.positions-column:nth-child(3) .position-row:nth-child(11) {
+  animation-delay: 0.45s;
+}
+
+.positions-column:nth-child(3) .position-row:nth-child(12) {
+  animation-delay: 0.48s;
+}
+
+.positions-column:nth-child(3) .position-row:nth-child(13) {
+  animation-delay: 0.51s;
+}
